@@ -1,4 +1,4 @@
-
+import sys
 class ButtonTools(object):
 
     def pressed(self, btn):
@@ -8,6 +8,9 @@ class ButtonTools(object):
         else: 
             btn.setStyleSheet("background-color: rgb(19, 148, 23);\n""color: rgb(255, 255, 255);")
         self.sum_check()
+        if self.win_checker():
+            pass
+
     def click_checker(self):
         """Отслеживать нажатие на кнопку"""
         self.Btn_00.clicked.connect(lambda:self.pressed(self.Btn_00))
@@ -35,8 +38,8 @@ class ButtonTools(object):
         self.Btn_42.clicked.connect(lambda:self.pressed(self.Btn_42))
         self.Btn_43.clicked.connect(lambda:self.pressed(self.Btn_43))
         self.Btn_44.clicked.connect(lambda:self.pressed(self.Btn_44))
-
     def sum_check(self):
+
         """Проверяет суммы чисел рядов и строк и если они совпадают с данными значениями, то обводит число суммы зеленым цветом"""
         for i in range(5):
             y_sum = 0
@@ -47,7 +50,7 @@ class ButtonTools(object):
                     y_sum += int(self.gameboard[i][j].text())
                 if self.gameboard[j][i].styleSheet() == \
                 ("background-color: rgb(19, 148, 23);\n""color: rgb(255, 255, 255);"):
-                    x_sum += int(self.gameboard[i][j].text())   
+                    x_sum += int(self.gameboard[j][i].text())   
 
             if int(self.sum_goal_x[0][i].text()) == x_sum:
                 self.sum_goal_x[0][i].setStyleSheet("color: rgb(255, 255, 255);\
@@ -64,6 +67,7 @@ class ButtonTools(object):
                                                     "background-color: rgb(10, 25, 44);")
                 self.sum_goal_x[1][i].setStyleSheet("color: rgb(255, 255, 255);\n"
                                                     "background-color: rgb(10, 25, 44);")
+                
             if int(self.sum_goal_y[0][i].text()) == y_sum:
                 self.sum_goal_y[0][i].setStyleSheet("color: rgb(255, 255, 255);\
                                                     background-color: rgb(10, 25, 44);\
@@ -79,3 +83,20 @@ class ButtonTools(object):
                                                     "background-color: rgb(10, 25, 44);")
                 self.sum_goal_y[1][i].setStyleSheet("color: rgb(255, 255, 255);\n"
                                                     "background-color: rgb(10, 25, 44);")
+    
+    def win_checker(self):
+        self.count_sum = 0
+        for i in range(5):
+            if self.sum_goal_y[0][i].styleSheet() == ("color: rgb(255, 255, 255);\
+                                                    background-color: rgb(10, 25, 44);\
+                                                    border :2px solid ;\
+                                                    border-color : green; "):
+                self.count_sum += 1
+        for i in range(5):
+            if self.sum_goal_x[0][i].styleSheet() == ("color: rgb(255, 255, 255);\
+                                                    background-color: rgb(10, 25, 44);\
+                                                    border :2px solid ;\
+                                                    border-color : green; "):
+                self.count_sum += 1
+        if self.count_sum == 10:
+            return True
