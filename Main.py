@@ -897,10 +897,9 @@ class Ui_MainWindow(ButtonTools, object):
                  [self.Btn_40, self.Btn_41,self.Btn_42,self.Btn_43,self.Btn_44]]
         self.sum_goal_x = [[self.sum_y0t,self.sum_y1t,self.sum_y2t,self.sum_y3t,self.sum_y4t],[self.sum_y0b,self.sum_y1b,self.sum_y2b,self.sum_y3b,self.sum_y4b]]
         self.sum_goal_y = [[ self.sum_x0l, self.sum_x1l,self.sum_x2l,self.sum_x3l,self.sum_x4l ],[self.sum_x0r, self.sum_x1r,self.sum_x2r,self.sum_x3r,self.sum_x4r]]
-        
-        self.sum_check()
         self.click_checker()
-
+        
+            
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
