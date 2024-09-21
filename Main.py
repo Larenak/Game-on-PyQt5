@@ -888,8 +888,18 @@ class Ui_MainWindow(ButtonTools, object):
         self.Btn_41.setText(_translate("MainWindow", str(game_board[4][1])))
         self.Btn_43.setText(_translate("MainWindow", str(game_board[4][3])))
         self.Btn_40.setText(_translate("MainWindow", str(game_board[4][0])))
-        self.click_checker()
+
+        # Добавление виджетов в массивы для работы с их значениями
+        self.gameboard = [[self.Btn_00, self.Btn_01,self.Btn_02,self.Btn_03,self.Btn_04],
+                 [self.Btn_10, self.Btn_11,self.Btn_12,self.Btn_13,self.Btn_14],
+                 [self.Btn_20, self.Btn_21,self.Btn_22,self.Btn_23,self.Btn_24],
+                 [self.Btn_30, self.Btn_31,self.Btn_32,self.Btn_33,self.Btn_34],
+                 [self.Btn_40, self.Btn_41,self.Btn_42,self.Btn_43,self.Btn_44]]
+        self.sum_goal_x = [[self.sum_y0t,self.sum_y1t,self.sum_y2t,self.sum_y3t,self.sum_y4t],[self.sum_y0b,self.sum_y1b,self.sum_y2b,self.sum_y3b,self.sum_y4b]]
+        self.sum_goal_y = [[ self.sum_x0l, self.sum_x1l,self.sum_x2l,self.sum_x3l,self.sum_x4l ],[self.sum_x0r, self.sum_x1r,self.sum_x2r,self.sum_x3r,self.sum_x4r]]
         
+        self.sum_check()
+        self.click_checker()
 
 if __name__ == "__main__":
     import sys
