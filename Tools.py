@@ -109,6 +109,7 @@ class ButtonTools(object):
     def win_dialog(self,app):
         """Диалоговое окно, возникающее при победе"""
         msgBox = QMessageBox()
+        msgBox.setWindowTitle('Victory!')
         msgBox.setIcon(QMessageBox.Question)
         msgBox.setText("You win! Want to try again?")
         msgBox.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
